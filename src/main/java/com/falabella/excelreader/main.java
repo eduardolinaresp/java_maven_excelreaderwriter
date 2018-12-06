@@ -5,37 +5,62 @@
  */
 package com.falabella.excelreader;
 
-import java.io.FileInputStream;
-import java.util.Properties;
+import com.falabella.services.FileManager;
+import java.io.File;
+import java.io.PrintStream;
+import org.apache.commons.io.FilenameUtils;
+
 
 /**
  *
  * @author ext_ealinares
  */
-public class main {
-
-    /**
-     * @param args the command line arguments
-     * @throws java.lang.Exception
-     */
-    public static void main(String[] args) throws Exception {
-        // TODO code application logic here
-
-        if (args.length == 0) {
-
-            throw new Exception("Parametro nombre archivo requerido! ");
-
-        }
-
-        FileManager fm = new FileManager();
-
-        String lv_param = args[0];
-
-        // lv_param = "cotas_maestro_base_20180828.xls";
-        System.out.println("Inicio proceso archivo: " + lv_param);
-
-        fm.main(lv_param);
-
+public class Main {
+    
+    private static FileManager fmt;
+  
+  public static void main(String[] args)
+    throws Exception
+  {
+    fmt = new FileManager();
+    
+    File folder = new File(fmt.getInput_file_folder());
+    listFilesForFolder(folder);
+  }
+  
+  public static void listFilesForFolder(File folder)
+  {
+    for (File fileEntry : folder.listFiles()) {
+      if (fileEntry.isDirectory()) {
+        listFilesForFolder(fileEntry);
+      } else {
+        do_file_process(fileEntry);
+      }
     }
-
+  }
+  
+  public static void do_file_process(File fileEntry)
+  {
+    String ext1 = FilenameUtils.getExtension(fileEntry.getAbsolutePath());
+    if (ext1.equals("csv")) {
+      move_file(fileEntry);
+    } else if (ext1.equals("xls")) {
+      plantilla(fileEntry);
+    }
+  }
+  
+  private static void move_file(File myFile)
+  {
+    System.out.println("Moviendo csv");
+    System.out.println(fmt.getOutput_file_folder());
+    fmt.setFile_path(fmt.getOutput_file_folder(), myFile.getName());
+    myFile.renameTo(new File(fmt.getFile_path()));
+  }
+  
+  private static void plantilla(File myFile)
+  {
+    System.out.println("Procesando plantilla xls");
+    
+    fmt.CopyDataBetweenSheets2(myFile);
+  }
 }

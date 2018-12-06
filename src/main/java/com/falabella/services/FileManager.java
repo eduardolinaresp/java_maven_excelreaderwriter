@@ -46,7 +46,7 @@ public class FileManager extends CopySheets {
         super();
         this.props = new Properties();
         String _prop_path = "src/resources/properties/properties.properties";
-
+      //..
         try {
             props.load(new FileInputStream(_prop_path));
             this.setTemplate_file_path(props.getProperty("template_path_file").trim());
