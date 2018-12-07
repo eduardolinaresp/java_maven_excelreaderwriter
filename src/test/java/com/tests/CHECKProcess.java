@@ -13,7 +13,7 @@ public class CHECKProcess {
     
     static void main(){
     
-        System.out.print("hola");
+        System.out.print("TODO");
         
     }
     
