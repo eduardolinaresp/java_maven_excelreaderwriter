@@ -45,7 +45,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.falabella.excelreader.MainTest</mainClass>
+                            <mainClass>com.falabella.main.Program</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

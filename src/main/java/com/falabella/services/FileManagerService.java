@@ -179,9 +179,8 @@ public class FileManagerService extends CopySheets {
 
     public void CopyDataBetweenWorkbooks(File myFile) {
 
+        
         try {
-
-            Workbook input_Workbook = WorkbookFactory.create(myFile);
 
             this.setFile_path(
                     this.getTemplate_file_path(),
@@ -190,7 +189,10 @@ public class FileManagerService extends CopySheets {
             File templateFile = new File(this.getFile_path());
 
             Workbook template_Workbook = WorkbookFactory.create(templateFile);
+            
+            Workbook input_Workbook = WorkbookFactory.create(myFile);
 
+            
             Sheet input_sheet
                     = input_Workbook.getSheet("TRANSIT_TIME_LANE");
 
@@ -198,7 +200,7 @@ public class FileManagerService extends CopySheets {
                     = template_Workbook.getSheet("TRANSIT_TIME_LANE");
 
             CopyRowsBetweenSheets(input_sheet, template_sheet);
-
+          
             input_sheet = input_Workbook.getSheet("TRANSIT_LANE_DTL");
 
             template_sheet = template_Workbook.getSheet("TRANSIT_LANE_DTL");
@@ -210,9 +212,8 @@ public class FileManagerService extends CopySheets {
             FileOutputStream out
                     = new FileOutputStream(new File(this.getFile_path()));
             template_Workbook.write(out);
-            
+
             input_Workbook.close();
-            
 
         }
         catch (FileNotFoundException ex) {
@@ -225,7 +226,6 @@ public class FileManagerService extends CopySheets {
                     FileManagerService.class.getName()).log(Level.SEVERE,
                     null, ex);
         }
-            
 
     }
 
