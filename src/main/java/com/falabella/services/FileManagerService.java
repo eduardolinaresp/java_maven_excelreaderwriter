@@ -210,6 +210,9 @@ public class FileManagerService extends CopySheets {
             FileOutputStream out
                     = new FileOutputStream(new File(this.getFile_path()));
             template_Workbook.write(out);
+            
+            input_Workbook.close();
+            
 
         }
         catch (FileNotFoundException ex) {
@@ -222,6 +225,7 @@ public class FileManagerService extends CopySheets {
                     FileManagerService.class.getName()).log(Level.SEVERE,
                     null, ex);
         }
+            
 
     }
 

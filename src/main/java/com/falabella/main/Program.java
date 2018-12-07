@@ -6,11 +6,9 @@
 package com.falabella.main;
 
 import com.falabella.services.FileManagerService;
+import org.apache.commons.io.FileUtils;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -24,6 +22,7 @@ public class Program {
         fms = new FileManagerService();
         File folder = new File(fms.getInput_file_folder());
         listFilesForFolder(folder);
+        FileUtils.cleanDirectory(folder);
     }
 
     public static void listFilesForFolder(File folder) {
@@ -56,7 +55,7 @@ public class Program {
 
     private static void CopyDataBetweenFiles(File myFile) {
        
-            System.out.println(String.format("Copy File : %S ", myFile.getName()));
+            System.out.println(String.format("Copy xls File : %S ", myFile.getName()));
             fms.CopyDataBetweenWorkbooks(myFile);   
             
 
