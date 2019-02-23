@@ -12,3 +12,29 @@
 
 	cd java_maven_excelreaderwriter
 
+### 03-Restaurar dependencias y compilar
+
+		Se asume que en el SO está instalado Maven.
+
+#### 03.01-Remueve los .class generados (si existen), descargará las 	librerías según lo que se haya definido en las dependencias del pom.xml
+		mvn clean
+
+#### 03.02-Compila nuestro código. De los .java genera los .class
+
+		mvn compile
+
+#### 03.03-Compila las pruebas
+
+		mvn test-compile
+
+#### 03.04-Ejecuta las pruebas.
+
+		mvn test
+
+#### 03.05-Genera los archivos jar o war, según lo que se haya definido en el pom.xml.
+
+		mvn install
+
+
+
+
