@@ -24,13 +24,16 @@
 		mvn compile
 
 #### 03.03-Compila las pruebas
-
+	TODO..
+<!---
 		mvn test-compile
+-->
 
 #### 03.04-Ejecuta las pruebas.
-
+	TODO...
+<!---
 		mvn test
-
+-->
 #### 03.05-Genera los archivos jar o war, según lo que se haya definido en el pom.xml.
 
 		mvn install
